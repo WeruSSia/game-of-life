@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class GameOfLife {
 
     private boolean[][] gameboard;
@@ -7,7 +5,7 @@ public class GameOfLife {
 
     public void play(int screenResolutionX, int screenResolutionY, int cellResolution) {
         generateGameboard(screenResolutionX, screenResolutionY, cellResolution);
-        populateGameboardWithCells();
+        fillGameboardCells();
         System.out.println(toString());
         evolve();
         System.out.println(toString());
@@ -21,20 +19,8 @@ public class GameOfLife {
         return screenDimension / pixelResolution;
     }
 
-    private void populateGameboardWithCells() {
-        fillGameboardRandomly(50);
-    }
-
-    private void fillGameboardRandomly(int percentage) {
-        Random random = new Random();
-        for (int i = 0; i < gameboard.length; i++) {
-            for (int j = 0; j < gameboard[i].length; j++) {
-                int randomPercentage = random.nextInt(100);
-                if (randomPercentage < percentage) {
-                    gameboard[i][j] = true;
-                }
-            }
-        }
+    private void fillGameboardCells() {
+        new GameboardFiller().fillRandomly(gameboard, 50);
     }
 
     private void evolve() {
