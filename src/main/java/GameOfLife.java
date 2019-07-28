@@ -7,7 +7,7 @@ public class GameOfLife {
 
     public void play(int screenResolutionX, int screenResolutionY, int cellResolution) {
         generateGameboard(screenResolutionX, screenResolutionY, cellResolution);
-        populateGameboardWithCells(50);
+        populateGameboardWithCells();
         System.out.println(toString());
         evolve();
         System.out.println(toString());
@@ -21,15 +21,17 @@ public class GameOfLife {
         return screenDimension / pixelResolution;
     }
 
-    private void populateGameboardWithCells(int percentOfTheBoard) {
+    private void populateGameboardWithCells() {
+        fillGameboardRandomly(50);
+    }
+
+    private void fillGameboardRandomly(int percentage) {
         Random random = new Random();
-        for (boolean[] row : gameboard) {
-            for (int i = 0; i < row.length; i++) {
-                int number = random.nextInt(gameboard.length);
-                if (number % (100 / percentOfTheBoard) == 0) {
-                    row[i] = true;
-                } else {
-                    row[i] = false;
+        for (int i = 0; i < gameboard.length; i++) {
+            for (int j = 0; j < gameboard[i].length; j++) {
+                int randomPercentage = random.nextInt(100);
+                if (randomPercentage < percentage) {
+                    gameboard[i][j] = true;
                 }
             }
         }
