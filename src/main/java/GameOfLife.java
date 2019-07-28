@@ -3,7 +3,7 @@ import java.util.Random;
 public class GameOfLife {
 
     private boolean[][] gameboard;
-    private final int BOARD_PADDING = 10;
+    private final int BOARD_PADDING = 5;
 
     public void play(int screenResolutionX, int screenResolutionY, int cellResolution) {
         generateGameboard(screenResolutionX, screenResolutionY, cellResolution);
@@ -14,7 +14,7 @@ public class GameOfLife {
     }
 
     private void generateGameboard(int screenResolutionX, int screenResolutionY, int pixelResolution) {
-        gameboard = new boolean[(countLogicResolution(screenResolutionX, pixelResolution)) + BOARD_PADDING][(countLogicResolution(screenResolutionY, pixelResolution)) + BOARD_PADDING];
+        gameboard = new boolean[(countLogicResolution(screenResolutionX, pixelResolution)) + 2 * BOARD_PADDING][(countLogicResolution(screenResolutionY, pixelResolution)) + 2 * BOARD_PADDING];
     }
 
     private int countLogicResolution(int screenDimension, int pixelResolution) {
@@ -39,22 +39,23 @@ public class GameOfLife {
         boolean[][] gameboardCopy = copyGameboard();
         for (int i = 1; i < gameboard.length - 1; i++) {
             for (int j = 1; j < gameboard[i].length - 1; j++) {
-                int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-                if (gameboardCopy[i][j]) {
-                    if (numberOfNeighbours < 2) {
-                        gameboard[i][j] = false;
-                    } else if (numberOfNeighbours == 2 || numberOfNeighbours == 3) {
-                        gameboard[i][j] = true;
-                    } else {
-                        gameboard[i][j] = false;
-                    }
-                } else {
-                    if (numberOfNeighbours == 3) {
-                        gameboard[i][j] = true;
-                    }
-                }
+                gameboard[i][j] = willSurviveToNextGeneration(gameboardCopy, i, j);
             }
         }
+    }
+
+    private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
+        int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
+        if (gameboardCopy[i][j]) {
+            if (numberOfNeighbours < 2 || numberOfNeighbours > 3) {
+                return false;
+            }
+        } else {
+            if (numberOfNeighbours == 3) {
+                return true;
+            }
+        }
+        return gameboardCopy[i][j];
     }
 
     private boolean[][] copyGameboard() {
@@ -97,8 +98,10 @@ public class GameOfLife {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (boolean[] row : gameboard) {
-            for (boolean cell : row) {
+        for (int i = BOARD_PADDING; i < gameboard.length - BOARD_PADDING; i++) {
+            boolean[] row = gameboard[i];
+            for (int j = BOARD_PADDING; j < row.length - BOARD_PADDING; j++) {
+                boolean cell = row[j];
                 stringBuilder.append(cell ? "1" : "0").append(" ");
             }
             stringBuilder.append("\n");
