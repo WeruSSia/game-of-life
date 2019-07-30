@@ -20,17 +20,22 @@ class GameboardFiller {
     }
 
     void fillUsingPattern(FillPattern pattern, int positionX, int positionY) {
-        PatternDrawer patternDrawer = new PatternDrawer(positionX, positionY);
+        PatternDrawer patternDrawer = new PatternDrawer(gameboard, positionX, positionY);
         switch (pattern) {
             case BLINKER:
+                patternDrawer.drawBlinker();
                 break;
             case TOAD:
+                patternDrawer.drawToad();
                 break;
             case BEACON:
+                patternDrawer.drawBeacon();
                 break;
             case PULSAR:
+                patternDrawer.drawPulsar();
                 break;
             case PENTADECATHLON:
+                patternDrawer.drawPentadecathlon();
                 break;
             case GLIDER:
                 break;
