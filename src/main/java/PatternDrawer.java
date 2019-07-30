@@ -113,7 +113,41 @@ class PatternDrawer {
                 gameboard[i][j] = true;
             }
         }
-        gameboard[positionX + 1][positionY + 1] = false;
-        gameboard[positionX + 1][positionY + 6] = false;
+        gameboard[positionY + 1][positionX + 1] = false;
+        gameboard[positionY + 1][positionX + 6] = false;
+    }
+
+    void drawGlider() {
+        gameboard[positionY][positionX + 1] = true;
+        gameboard[positionY + 1][positionX + 2] = true;
+        for (int i = positionY + 2; i < positionY + 3; i++) {
+            for (int j = positionX; j < positionX + 3; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+    }
+
+    void drawLightweightSpaceship() {
+        for (int i = positionY; i < positionY + 1; i++) {
+            for (int j = positionX + 1; j < positionX + 3; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 1; i < positionY + 2; i++) {
+            for (int j = positionX; j < positionX + 4; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 2; i < positionY + 3; i++) {
+            for (int j = positionX; j < positionX + 5; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 3; i < positionY + 4; i++) {
+            for (int j = positionX + 2; j < positionX + 4; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        gameboard[positionY + 2][positionX + 2] = false;
     }
 }

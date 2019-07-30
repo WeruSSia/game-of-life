@@ -38,8 +38,10 @@ class GameboardFiller {
                 patternDrawer.drawPentadecathlon();
                 break;
             case GLIDER:
+                patternDrawer.drawGlider();
                 break;
             case LIGHTWEIGHT_SPACESHIP:
+                patternDrawer.drawLightweightSpaceship();
                 break;
             case MIDDLEWEIGHT_SPACESHIP:
                 break;
