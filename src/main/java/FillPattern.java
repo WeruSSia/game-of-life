@@ -1,4 +1,4 @@
-enum FillMethod {
+enum FillPattern {
     RANDOM,
     BLINKER,
     TOAD,

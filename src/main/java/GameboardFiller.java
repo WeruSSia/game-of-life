@@ -19,8 +19,9 @@ class GameboardFiller {
         }
     }
 
-    void fillUsingMethod(FillMethod method, int positionX, int positionY) {
-        switch (method) {
+    void fillUsingPattern(FillPattern pattern, int positionX, int positionY) {
+        PatternDrawer patternDrawer = new PatternDrawer(positionX, positionY);
+        switch (pattern) {
             case BLINKER:
                 break;
             case TOAD:
