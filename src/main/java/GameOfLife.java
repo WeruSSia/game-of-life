@@ -20,7 +20,7 @@ public class GameOfLife {
     }
 
     private void fillGameboardCells() {
-        new GameboardFiller().fillRandomly(gameboard, 50);
+        new GameboardFiller(gameboard).fillRandomly(50);
     }
 
     private void evolve() {
