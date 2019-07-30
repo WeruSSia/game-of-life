@@ -150,4 +150,52 @@ class PatternDrawer {
         }
         gameboard[positionY + 2][positionX + 2] = false;
     }
+
+    void drawMiddleweightSpaceship() {
+        for (int i = positionY; i < positionY + 1; i++) {
+            for (int j = positionX + 1; j < positionX + 4; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 1; i < positionY + 2; i++) {
+            for (int j = positionX; j < positionX + 5; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 2; i < positionY + 3; i++) {
+            for (int j = positionX; j < positionX + 6; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 3; i < positionY + 4; i++) {
+            for (int j = positionX + 3; j < positionX + 5; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        gameboard[positionY + 2][positionX + 3] = false;
+    }
+
+    void drawHeavyWeightSpaceship() {
+        for (int i = positionY; i < positionY + 1; i++) {
+            for (int j = positionX + 1; j < positionX + 5; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 1; i < positionY + 2; i++) {
+            for (int j = positionX; j < positionX + 6; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 2; i < positionY + 3; i++) {
+            for (int j = positionX; j < positionX + 7; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        for (int i = positionY + 3; i < positionY + 4; i++) {
+            for (int j = positionX + 4; j < positionX + 6; j++) {
+                gameboard[i][j] = true;
+            }
+        }
+        gameboard[positionY + 2][positionX + 4] = false;
+    }
 }

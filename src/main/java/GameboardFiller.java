@@ -44,8 +44,10 @@ class GameboardFiller {
                 patternDrawer.drawLightweightSpaceship();
                 break;
             case MIDDLEWEIGHT_SPACESHIP:
+                patternDrawer.drawMiddleweightSpaceship();
                 break;
             case HEAVYWEIGHT_SPACESHIP:
+                patternDrawer.drawHeavyWeightSpaceship();
                 break;
         }
     }
