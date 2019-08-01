@@ -3,6 +3,9 @@ public class GameOfLife {
     private boolean[][] gameboard;
     private final int BOARD_PADDING = 5;
 
+    private GameboardResolutionSettings gameboardResolutionSettings;
+    private GameboardFillingSettings gameboardFillingSettings;
+
     public void play(int screenResolutionX, int screenResolutionY, int cellResolution) {
         generateGameboard(screenResolutionX, screenResolutionY, cellResolution);
         fillGameboardCells();

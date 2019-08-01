@@ -1,5 +1,4 @@
 enum FillPattern {
-    RANDOM,
     BLINKER,
     TOAD,
     BEACON,
