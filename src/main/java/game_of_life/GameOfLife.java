@@ -3,7 +3,7 @@ package game_of_life;
 public class GameOfLife {
 
     private boolean[][] gameboard;
-    private final int BOARD_PADDING = 5;
+    final static int BOARD_PADDING = 5;
 
     private GameboardResolutionSettings gameboardResolutionSettings;
     private GameboardFillingSettings gameboardFillingSettings;

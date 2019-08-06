@@ -1,6 +1,6 @@
 package game_of_life;
 
-enum Pattern {
+public enum Pattern {
     BLINKER,
     TOAD,
     BEACON,

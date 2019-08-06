@@ -39,7 +39,7 @@ class GameboardFiller {
     }
 
     private void drawPattern(Pattern pattern, int positionX, int positionY) {
-        PatternDrawer patternDrawer = new PatternDrawer(gameboard, positionX, positionY);
+        PatternDrawer patternDrawer = new PatternDrawer(gameboard, positionX+GameOfLife.BOARD_PADDING, positionY+GameOfLife.BOARD_PADDING);
         switch (pattern) {
             case BLINKER:
                 patternDrawer.drawBlinker();

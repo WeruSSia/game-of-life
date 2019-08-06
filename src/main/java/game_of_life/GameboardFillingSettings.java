@@ -7,11 +7,11 @@ public class GameboardFillingSettings {
     private Integer percentageOfRandomFilling;
     private Set<PatternOnPosition> patternsOnPositions;
 
-    GameboardFillingSettings(Integer percentageOfRandomFilling) {
+    public GameboardFillingSettings(Integer percentageOfRandomFilling) {
         this.percentageOfRandomFilling = percentageOfRandomFilling;
     }
 
-    GameboardFillingSettings(Set<PatternOnPosition> patternsOnPositions) {
+    public GameboardFillingSettings(Set<PatternOnPosition> patternsOnPositions) {
         this.patternsOnPositions = patternsOnPositions;
     }
 

@@ -8,7 +8,7 @@ public class GameboardResolutionSettings {
     private int logicWidth;
     private int logicHeight;
 
-    GameboardResolutionSettings(int width, int height, int cellResolution) {
+    public GameboardResolutionSettings(int width, int height, int cellResolution) {
         this.width = width;
         this.height = height;
         this.cellResolution = cellResolution;
