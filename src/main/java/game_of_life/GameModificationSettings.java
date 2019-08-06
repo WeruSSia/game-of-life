@@ -1,12 +1,11 @@
 package game_of_life;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class GameModificationSettings {
 
     private String gameModificationCode;
-    private Set<Character> amountOfCellsInOrderForLiveCellToLive;
-    private Set<Character> amountOfCellsInOrderForDeadCellToLive;
 
     public GameModificationSettings() {
         this.gameModificationCode = "23/3";
@@ -25,15 +24,19 @@ public class GameModificationSettings {
         return 0;
     }
 
-    public void getAmountOfCellsInOrderForLiveCellToLive() {
+    public Set<Character> getAmountOfCellsInOrderForLiveCellToLive() {
+        Set<Character> amountOfCellsInOrderForLiveCellToLive = new HashSet<>();
         for (int i = 0; i < getIndexOfSlash(); i++) {
             amountOfCellsInOrderForLiveCellToLive.add(gameModificationCode.charAt(i));
         }
+        return amountOfCellsInOrderForLiveCellToLive;
     }
 
-    public void getAmountOfCellsInOrderForDeadCellsToLive() {
-        for (int i = getIndexOfSlash(); i < gameModificationCode.length(); i++) {
+    public Set<Character> getAmountOfCellsInOrderForDeadCellsToLive() {
+        Set<Character> amountOfCellsInOrderForDeadCellToLive = new HashSet<>();
+        for (int i = getIndexOfSlash()+1; i < gameModificationCode.length(); i++) {
             amountOfCellsInOrderForDeadCellToLive.add(gameModificationCode.charAt(i));
         }
+        return amountOfCellsInOrderForDeadCellToLive;
     }
 }

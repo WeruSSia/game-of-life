@@ -7,10 +7,12 @@ public class GameOfLife {
 
     private GameboardResolutionSettings gameboardResolutionSettings;
     private GameboardFillingSettings gameboardFillingSettings;
+    private GameModificationSettings gameModificationSettings;
 
-    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings) {
+    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings, GameModificationSettings gameModificationSettings) {
         this.gameboardResolutionSettings = gameboardResolutionSettings;
         this.gameboardFillingSettings = gameboardFillingSettings;
+        this.gameModificationSettings = gameModificationSettings;
     }
 
     public void play() {
@@ -37,12 +39,20 @@ public class GameOfLife {
     private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
         int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
         if (gameboardCopy[i][j]) {
-            if (numberOfNeighbours < 2 || numberOfNeighbours > 3) {
-                return false;
+            for(Character amountOfCellsInOrderForLiveCellToLive : gameModificationSettings.getAmountOfCellsInOrderForLiveCellToLive()){
+                if(numberOfNeighbours == Character.getNumericValue(amountOfCellsInOrderForLiveCellToLive)){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         } else {
-            if (numberOfNeighbours == 3) {
-                return true;
+            for(Character amountOfCellsInOrderForDeadCellToLive : gameModificationSettings.getAmountOfCellsInOrderForDeadCellsToLive()){
+                if(numberOfNeighbours == Character.getNumericValue(amountOfCellsInOrderForDeadCellToLive)){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         }
         return gameboardCopy[i][j];
