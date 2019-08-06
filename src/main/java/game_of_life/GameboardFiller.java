@@ -1,27 +1,44 @@
 package game_of_life;
 
 import java.util.Random;
+import java.util.Set;
 
 class GameboardFiller {
 
     private boolean[][] gameboard;
+    private GameboardFillingSettings gameboardFillingSettings;
 
-    public GameboardFiller(boolean[][] gameboard) {
+    GameboardFiller(boolean[][] gameboard, GameboardFillingSettings gameboardFillingSettings) {
         this.gameboard = gameboard;
+        this.gameboardFillingSettings = gameboardFillingSettings;
     }
 
-    void fillRandomly(int percentage) {
+    void fill() {
+        if (gameboardFillingSettings.getPercentageOfRandomFilling() != null) {
+            fillRandomly(gameboardFillingSettings.getPercentageOfRandomFilling());
+        } else {
+            fillWithSetOfPatterns(gameboardFillingSettings.getPatternsOnPositions());
+        }
+    }
+
+    private void fillRandomly(int percentageOfRandomFilling) {
         Random random = new Random();
         for (int i = 0; i < gameboard.length; i++) {
             for (int j = 0; j < gameboard[i].length; j++) {
-                if (random.nextInt(100) < percentage) {
+                if (random.nextInt(100) < percentageOfRandomFilling) {
                     gameboard[i][j] = true;
                 }
             }
         }
     }
 
-    void fillUsingPattern(Pattern pattern, int positionX, int positionY) {
+    private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
+        for (PatternOnPosition patternOnPosition : patternsOnPositions) {
+            drawPattern(patternOnPosition.getPattern(), patternOnPosition.getPositionX(), patternOnPosition.getPositionY());
+        }
+    }
+
+    private void drawPattern(Pattern pattern, int positionX, int positionY) {
         PatternDrawer patternDrawer = new PatternDrawer(gameboard, positionX, positionY);
         switch (pattern) {
             case BLINKER:
