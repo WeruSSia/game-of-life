@@ -8,24 +8,21 @@ public class GameOfLife {
     private GameboardResolutionSettings gameboardResolutionSettings;
     private GameboardFillingSettings gameboardFillingSettings;
 
-    public void play(int screenResolutionX, int screenResolutionY, int cellResolution) {
-        generateGameboard(screenResolutionX, screenResolutionY, cellResolution);
-        fillGameboardCells();
+    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings) {
+        this.gameboardResolutionSettings = gameboardResolutionSettings;
+        this.gameboardFillingSettings = gameboardFillingSettings;
+    }
+
+    public void play() {
+        generateGameboard(gameboardResolutionSettings.getLogicWidth(), gameboardResolutionSettings.getLogicHeight());
+        new GameboardFiller(gameboard, gameboardFillingSettings).fill();
         System.out.println(toString());
         evolve();
         System.out.println(toString());
     }
 
-    private void generateGameboard(int screenResolutionX, int screenResolutionY, int pixelResolution) {
-        gameboard = new boolean[(countLogicResolution(screenResolutionX, pixelResolution)) + 2 * BOARD_PADDING][(countLogicResolution(screenResolutionY, pixelResolution)) + 2 * BOARD_PADDING];
-    }
-
-    private int countLogicResolution(int screenDimension, int pixelResolution) {
-        return screenDimension / pixelResolution;
-    }
-
-    private void fillGameboardCells() {
-        new GameboardFiller(gameboard).fillRandomly(50);
+    private void generateGameboard(int logicWidth, int logicHeight) {
+        gameboard = new boolean[logicWidth + (2 * BOARD_PADDING)][logicHeight + (2 * BOARD_PADDING)];
     }
 
     private void evolve() {
@@ -95,7 +92,7 @@ public class GameOfLife {
             boolean[] row = gameboard[i];
             for (int j = BOARD_PADDING; j < row.length - BOARD_PADDING; j++) {
                 boolean cell = row[j];
-                stringBuilder.append(cell ? "1" : "0").append(" ");
+                stringBuilder.append(cell ? "0" : ".").append(" ");
             }
             stringBuilder.append("\n");
         }
