@@ -4,30 +4,22 @@ import java.util.Set;
 
 public class GameboardFillingSettings {
 
-    private int percentageOfTheBoard;
-    private Set<Pattern> patterns;
+    private Integer percentageOfRandomFilling;
+    private Set<PatternOnPosition> patternsOnPositions;
 
-    GameboardFillingSettings(int percentageOfTheBoard) {
-        this.percentageOfTheBoard = percentageOfTheBoard;
+    GameboardFillingSettings(Integer percentageOfRandomFilling) {
+        this.percentageOfRandomFilling = percentageOfRandomFilling;
     }
 
-    GameboardFillingSettings(Set<Pattern> patterns) {
-        this.patterns = patterns;
+    GameboardFillingSettings(Set<PatternOnPosition> patternsOnPositions) {
+        this.patternsOnPositions = patternsOnPositions;
     }
 
-    public int getPercentageOfTheBoard() {
-        return percentageOfTheBoard;
+    public Integer getPercentageOfRandomFilling() {
+        return percentageOfRandomFilling;
     }
 
-    public void setPercentageOfTheBoard(int percentageOfTheBoard) {
-        this.percentageOfTheBoard = percentageOfTheBoard;
-    }
-
-    public Set<Pattern> getPatterns() {
-        return patterns;
-    }
-
-    public void setPatterns(Set<Pattern> patterns) {
-        this.patterns = patterns;
+    public Set<PatternOnPosition> getPatternsOnPositions() {
+        return patternsOnPositions;
     }
 }
