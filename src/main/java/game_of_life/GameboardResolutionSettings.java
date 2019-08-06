@@ -1,3 +1,5 @@
+package game_of_life;
+
 public class GameboardResolutionSettings {
 
     private int screenResolutionX;

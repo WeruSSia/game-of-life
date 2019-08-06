@@ -1,3 +1,5 @@
+package game_of_life;
+
 class PatternDrawer {
 
     private boolean[][] gameboard;
