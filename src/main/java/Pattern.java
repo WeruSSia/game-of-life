@@ -1,4 +1,4 @@
-enum FillPattern {
+enum Pattern {
     BLINKER,
     TOAD,
     BEACON,

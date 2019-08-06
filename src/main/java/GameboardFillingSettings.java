@@ -3,13 +3,13 @@ import java.util.Set;
 public class GameboardFillingSettings {
 
     private int percentageOfTheBoard;
-    private Set<FillPattern> patterns;
+    private Set<Pattern> patterns;
 
     GameboardFillingSettings(int percentageOfTheBoard) {
         this.percentageOfTheBoard = percentageOfTheBoard;
     }
 
-    GameboardFillingSettings(Set<FillPattern> patterns) {
+    GameboardFillingSettings(Set<Pattern> patterns) {
         this.patterns = patterns;
     }
 
@@ -21,11 +21,11 @@ public class GameboardFillingSettings {
         this.percentageOfTheBoard = percentageOfTheBoard;
     }
 
-    public Set<FillPattern> getPatterns() {
+    public Set<Pattern> getPatterns() {
         return patterns;
     }
 
-    public void setPatterns(Set<FillPattern> patterns) {
+    public void setPatterns(Set<Pattern> patterns) {
         this.patterns = patterns;
     }
 }

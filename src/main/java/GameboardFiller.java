@@ -19,7 +19,7 @@ class GameboardFiller {
         }
     }
 
-    void fillUsingPattern(FillPattern pattern, int positionX, int positionY) {
+    void fillUsingPattern(Pattern pattern, int positionX, int positionY) {
         PatternDrawer patternDrawer = new PatternDrawer(gameboard, positionX, positionY);
         switch (pattern) {
             case BLINKER:
