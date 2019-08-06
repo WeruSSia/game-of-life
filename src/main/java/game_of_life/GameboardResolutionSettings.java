@@ -2,37 +2,37 @@ package game_of_life;
 
 public class GameboardResolutionSettings {
 
-    private int screenResolutionX;
-    private int screenResolutionY;
+    private int width;
+    private int height;
     private int cellResolution;
+    private int logicWidth;
+    private int logicHeight;
 
-    GameboardResolutionSettings(int screenResolutionX, int screenResolutionY, int cellResolution) {
-        this.screenResolutionX = screenResolutionX;
-        this.screenResolutionY = screenResolutionY;
+    GameboardResolutionSettings(int width, int height, int cellResolution) {
+        this.width = width;
+        this.height = height;
         this.cellResolution = cellResolution;
+        this.logicWidth = width / cellResolution;
+        this.logicHeight = height / cellResolution;
     }
 
-    public int getScreenResolutionX() {
-        return screenResolutionX;
+    public int getWidth() {
+        return width;
     }
 
-    public void setScreenResolutionX(int screenResolutionX) {
-        this.screenResolutionX = screenResolutionX;
-    }
-
-    public int getScreenResolutionY() {
-        return screenResolutionY;
-    }
-
-    public void setScreenResolutionY(int screenResolutionY) {
-        this.screenResolutionY = screenResolutionY;
+    public int getHeight() {
+        return height;
     }
 
     public int getCellResolution() {
         return cellResolution;
     }
 
-    public void setCellResolution(int cellResolution) {
-        this.cellResolution = cellResolution;
+    public int getLogicWidth() {
+        return logicWidth;
+    }
+
+    public int getLogicHeight() {
+        return logicHeight;
     }
 }
