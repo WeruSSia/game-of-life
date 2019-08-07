@@ -38,25 +38,7 @@ public class GameOfLife {
 
     private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
         int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-        if (gameboardCopy[i][j]) {
-            //return gameModificationSettings.getAmountOfCellsInOrderForLiveCellToLive().contains(numberOfNeighbours);
-            for (Integer bFactor : gameModificationSettings.getBFactors()) {
-                if (numberOfNeighbours == bFactor) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        } else {
-            for (Integer sFactor : gameModificationSettings.getSFactors()) {
-                if (numberOfNeighbours == sFactor) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return gameboardCopy[i][j];
+            return gameModificationSettings.willSurvive(gameboardCopy[i][j],numberOfNeighbours);
     }
 
     private boolean[][] copyGameboard() {

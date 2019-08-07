@@ -11,6 +11,8 @@ public class GameModificationSettings {
 
     public GameModificationSettings() {
         this.gameModificationCode = "23/3";
+        this.bFactors = getBFactors();
+        this.sFactors = getSFactors();
     }
 
     public GameModificationSettings(String gameModificationCode) {
@@ -28,21 +30,27 @@ public class GameModificationSettings {
         return 0;
     }
 
-    public Set<Integer> getBFactors() {
-        Set<Integer> amountOfCellsInOrderForLiveCellToLive = new HashSet<>();
+    private Set<Integer> getBFactors() {
+        Set<Integer> bFactors = new HashSet<>();
         for (int i = 0; i < getIndexOfSlash(); i++) {
-            amountOfCellsInOrderForLiveCellToLive.add(Character.getNumericValue(gameModificationCode.charAt(i)));
+            bFactors.add(Character.getNumericValue(gameModificationCode.charAt(i)));
         }
-        return amountOfCellsInOrderForLiveCellToLive;
+        return bFactors;
     }
 
-    public Set<Integer> getSFactors() {
-        Set<Integer> amountOfCellsInOrderForDeadCellToLive = new HashSet<>();
+    private Set<Integer> getSFactors() {
+        Set<Integer> sFactors = new HashSet<>();
         for (int i = getIndexOfSlash() + 1; i < gameModificationCode.length(); i++) {
-            amountOfCellsInOrderForDeadCellToLive.add(Character.getNumericValue(gameModificationCode.charAt(i)));
+            sFactors.add(Character.getNumericValue(gameModificationCode.charAt(i)));
         }
-        return amountOfCellsInOrderForDeadCellToLive;
+        return sFactors;
     }
 
-    //public boolean survive(boolean alive, int numberOfNeighbours){getBFactors().contains()}
+    boolean willSurvive(boolean cell, int numberOfNeighbours) {
+        if (cell) {
+            return bFactors.contains(numberOfNeighbours);
+        } else {
+            return sFactors.contains(numberOfNeighbours);
+        }
+    }
 }
