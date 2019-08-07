@@ -34,12 +34,12 @@ class GameboardFiller {
 
     private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
         for (PatternOnPosition patternOnPosition : patternsOnPositions) {
-            drawPattern(patternOnPosition.getPattern(), patternOnPosition.getPositionX(), patternOnPosition.getPositionY());
+            drawPattern(patternOnPosition.getPattern(), patternOnPosition.getPosition());
         }
     }
 
-    private void drawPattern(Pattern pattern, int positionX, int positionY) {
-        PatternDrawer patternDrawer = new PatternDrawer(gameboard, positionX+GameOfLife.BOARD_PADDING, positionY+GameOfLife.BOARD_PADDING);
+    private void drawPattern(Pattern pattern, Position position) {
+        PatternDrawer patternDrawer = new PatternDrawer(gameboard, position.getPositionX()+GameOfLife.BOARD_PADDING, position.getPositionY()+GameOfLife.BOARD_PADDING);
         switch (pattern) {
             case BLINKER:
                 patternDrawer.drawBlinker();
