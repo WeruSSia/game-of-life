@@ -6,10 +6,10 @@ class PatternDrawer {
     private int positionX;
     private int positionY;
 
-    PatternDrawer(boolean[][] gameboard, int positionX, int positionY) {
+    PatternDrawer(boolean[][] gameboard, Position position) {
         this.gameboard = gameboard;
-        this.positionX = positionX;
-        this.positionY = positionY;
+        this.positionX = position.getPositionX();
+        this.positionY = position.getPositionY();
     }
 
     void drawBlinker() {
@@ -143,5 +143,13 @@ class PatternDrawer {
             gameboard[positionY + 3][j] = true;
         }
         gameboard[positionY + 2][positionX + 4] = false;
+    }
+
+    void drawOwnPattern(boolean[][] ownPattern) {
+        for (int i = positionY; i < positionY + ownPattern.length; i++) {
+            for (int j = positionX; j < positionX + ownPattern[0].length; j++) {
+                gameboard[i][j] = ownPattern[i-positionY][j-positionX];
+            }
+        }
     }
 }

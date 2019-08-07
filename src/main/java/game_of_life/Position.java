@@ -6,8 +6,8 @@ public class Position {
     private int positionY;
 
     public Position(int positionX, int positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+        this.positionX = positionX + GameOfLife.BOARD_PADDING;
+        this.positionY = positionY + GameOfLife.BOARD_PADDING;
     }
 
     public int getPositionX() {

@@ -16,8 +16,10 @@ class GameboardFiller {
     void fill() {
         if (gameboardFillingSettings.getPercentageOfRandomFilling() != null) {
             fillRandomly(gameboardFillingSettings.getPercentageOfRandomFilling());
-        } else {
+        } else if (gameboardFillingSettings.getPatternsOnPositions() != null) {
             fillWithSetOfPatterns(gameboardFillingSettings.getPatternsOnPositions());
+        } else {
+            fillWithOwnPatternOnPositions(gameboardFillingSettings.getOwnPattern());
         }
     }
 
@@ -38,8 +40,15 @@ class GameboardFiller {
         }
     }
 
+    private void fillWithOwnPatternOnPositions(OwnPattern ownPatternOnPositions){
+        for(Position position:ownPatternOnPositions.getPositions()){
+            PatternDrawer patternDrawer = new PatternDrawer(gameboard,position);
+            patternDrawer.drawOwnPattern(ownPatternOnPositions.getPattern());
+        }
+    }
+
     private void drawPattern(Pattern pattern, Position position) {
-        PatternDrawer patternDrawer = new PatternDrawer(gameboard, position.getPositionX()+GameOfLife.BOARD_PADDING, position.getPositionY()+GameOfLife.BOARD_PADDING);
+        PatternDrawer patternDrawer = new PatternDrawer(gameboard, position);
         switch (pattern) {
             case BLINKER:
                 patternDrawer.drawBlinker();
