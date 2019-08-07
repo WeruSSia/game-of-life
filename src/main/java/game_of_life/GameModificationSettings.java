@@ -6,6 +6,8 @@ import java.util.Set;
 public class GameModificationSettings {
 
     private String gameModificationCode;
+    private Set<Integer> bFactors;
+    private Set<Integer> sFactors;
 
     public GameModificationSettings() {
         this.gameModificationCode = "23/3";
@@ -13,6 +15,8 @@ public class GameModificationSettings {
 
     public GameModificationSettings(String gameModificationCode) {
         this.gameModificationCode = gameModificationCode;
+        this.bFactors = getBFactors();
+        this.sFactors = getSFactors();
     }
 
     private int getIndexOfSlash() {
@@ -24,19 +28,21 @@ public class GameModificationSettings {
         return 0;
     }
 
-    public Set<Character> getAmountOfCellsInOrderForLiveCellToLive() {
-        Set<Character> amountOfCellsInOrderForLiveCellToLive = new HashSet<>();
+    public Set<Integer> getBFactors() {
+        Set<Integer> amountOfCellsInOrderForLiveCellToLive = new HashSet<>();
         for (int i = 0; i < getIndexOfSlash(); i++) {
-            amountOfCellsInOrderForLiveCellToLive.add(gameModificationCode.charAt(i));
+            amountOfCellsInOrderForLiveCellToLive.add(Character.getNumericValue(gameModificationCode.charAt(i)));
         }
         return amountOfCellsInOrderForLiveCellToLive;
     }
 
-    public Set<Character> getAmountOfCellsInOrderForDeadCellsToLive() {
-        Set<Character> amountOfCellsInOrderForDeadCellToLive = new HashSet<>();
-        for (int i = getIndexOfSlash()+1; i < gameModificationCode.length(); i++) {
-            amountOfCellsInOrderForDeadCellToLive.add(gameModificationCode.charAt(i));
+    public Set<Integer> getSFactors() {
+        Set<Integer> amountOfCellsInOrderForDeadCellToLive = new HashSet<>();
+        for (int i = getIndexOfSlash() + 1; i < gameModificationCode.length(); i++) {
+            amountOfCellsInOrderForDeadCellToLive.add(Character.getNumericValue(gameModificationCode.charAt(i)));
         }
         return amountOfCellsInOrderForDeadCellToLive;
     }
+
+    //public boolean survive(boolean alive, int numberOfNeighbours){getBFactors().contains()}
 }
