@@ -38,7 +38,7 @@ public class GameOfLife {
 
     private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
         int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-            return gameModificationSettings.willSurvive(gameboardCopy[i][j],numberOfNeighbours);
+        return gameModificationSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
     }
 
     private boolean[][] copyGameboard() {

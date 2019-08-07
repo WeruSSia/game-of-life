@@ -40,10 +40,9 @@ class GameboardFiller {
         }
     }
 
-    private void fillWithOwnPatternOnPositions(OwnPattern ownPatternOnPositions){
-        for(Position position:ownPatternOnPositions.getPositions()){
-            PatternDrawer patternDrawer = new PatternDrawer(gameboard,position);
-            patternDrawer.drawOwnPattern(ownPatternOnPositions.getPattern());
+    private void fillWithOwnPatternOnPositions(OwnPattern ownPatternOnPositions) {
+        for (Position position : ownPatternOnPositions.getPositions()) {
+            new PatternDrawer(gameboard, position).drawOwnPattern(ownPatternOnPositions.getPattern());
         }
     }
 
