@@ -5,43 +5,34 @@ import java.util.Set;
 
 public class GameModificationSettings {
 
-    private String gameModificationCode;
+    private String[] gameModificationCode;
     private Set<Integer> bFactors;
     private Set<Integer> sFactors;
 
     public GameModificationSettings() {
-        this.gameModificationCode = "23/3";
-        this.bFactors = getBFactors();
-        this.sFactors = getSFactors();
+        this.gameModificationCode = new String[]{"23", "3"};
+        this.bFactors = getBFactors(this.gameModificationCode[0]);
+        this.sFactors = getSFactors(this.gameModificationCode[1]);
     }
 
     public GameModificationSettings(String gameModificationCode) {
-        this.gameModificationCode = gameModificationCode;
-        this.bFactors = getBFactors();
-        this.sFactors = getSFactors();
+        this.gameModificationCode = gameModificationCode.split("/");
+        this.bFactors = getBFactors(this.gameModificationCode[0]);
+        this.sFactors = getSFactors(this.gameModificationCode[1]);
     }
 
-    private int getIndexOfSlash() {
-        for (int i = 0; i < gameModificationCode.length(); i++) {
-            if (gameModificationCode.charAt(i) == '/') {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    private Set<Integer> getBFactors() {
+    private Set<Integer> getBFactors(String leftSide) {
         Set<Integer> bFactors = new HashSet<>();
-        for (int i = 0; i < getIndexOfSlash(); i++) {
-            bFactors.add(Character.getNumericValue(gameModificationCode.charAt(i)));
+        for (int i = 0; i < leftSide.length(); i++) {
+            bFactors.add(Character.getNumericValue(leftSide.charAt(i)));
         }
         return bFactors;
     }
 
-    private Set<Integer> getSFactors() {
+    private Set<Integer> getSFactors(String rightSide) {
         Set<Integer> sFactors = new HashSet<>();
-        for (int i = getIndexOfSlash() + 1; i < gameModificationCode.length(); i++) {
-            sFactors.add(Character.getNumericValue(gameModificationCode.charAt(i)));
+        for (int i = 0; i < rightSide.length(); i++) {
+            sFactors.add(Character.getNumericValue(rightSide.charAt(i)));
         }
         return sFactors;
     }
