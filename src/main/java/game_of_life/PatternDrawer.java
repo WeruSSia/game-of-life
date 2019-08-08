@@ -1,10 +1,15 @@
 package game_of_life;
 
+import java.util.Arrays;
+
 class PatternDrawer {
 
     private boolean[][] gameboard;
     private int positionX;
     private int positionY;
+
+    PatternDrawer() {
+    }
 
     PatternDrawer(boolean[][] gameboard, Position position) {
         this.gameboard = gameboard;
@@ -12,144 +17,135 @@ class PatternDrawer {
         this.positionY = position.getPositionY();
     }
 
-    void drawBlinker() {
-        for (int j = positionX; j < positionX + 3; j++) {
-            gameboard[positionY][j] = true;
-        }
+    private boolean[][] getBlinkerAsArray() {
+        boolean[][] blinker = new boolean[1][3];
+        Arrays.fill(blinker[0], true);
+        return blinker;
     }
 
-    void drawToad() {
-        for (int j = positionX + 1; j < positionX + 4; j++) {
-            gameboard[positionY][j] = true;
-        }
-        for (int j = positionX; j < positionX + 3; j++) {
-            gameboard[positionY + 1][j] = true;
-        }
+    private boolean[][] getToadAsArray() {
+        boolean[][] toad = new boolean[2][4];
+        Arrays.fill(toad[0], 1, 4, true);
+        Arrays.fill(toad[1], 0, 3, true);
+        return toad;
     }
 
-    void drawBeacon() {
-        for (int i = positionY; i < positionY + 2; i++) {
-            for (int j = positionX; j < positionX + 2; j++) {
-                gameboard[i][j] = true;
+    private boolean[][] getBeaconAsArray() {
+        boolean[][] beacon = new boolean[4][4];
+        Arrays.fill(beacon[0], 0, 2, true);
+        Arrays.fill(beacon[3], 2, 4, true);
+        beacon[1][0] = true;
+        beacon[2][3] = true;
+        return beacon;
+    }
+
+    private boolean[][] getPulsarAsArray() {
+        boolean[][] pulsar = new boolean[13][13];
+        for (int i = 2; i < 5; i++) {
+            pulsar[0][i] = true;
+            pulsar[5][i] = true;
+            pulsar[7][i] = true;
+            pulsar[12][i] = true;
+        }
+        for (int i = 8; i < 11; i++) {
+            pulsar[0][i] = true;
+            pulsar[5][i] = true;
+            pulsar[7][i] = true;
+            pulsar[12][i] = true;
+        }
+        for (int i = 2; i < 5; i++) {
+            pulsar[i][0] = true;
+            pulsar[i][5] = true;
+            pulsar[i][7] = true;
+            pulsar[i][12] = true;
+        }
+        for (int i = 8; i < 11; i++) {
+            pulsar[i][0] = true;
+            pulsar[i][5] = true;
+            pulsar[i][7] = true;
+            pulsar[i][12] = true;
+        }
+        return pulsar;
+    }
+
+    private boolean[][] getPentadecathlonAsArray() {
+        boolean[][] pentadecathlon = new boolean[3][8];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 8; j++) {
+                pentadecathlon[i][j] = true;
             }
         }
-        for (int i = positionY + 2; i < positionY + 4; i++) {
-            for (int j = positionX + 2; j < positionX + 4; j++) {
-                gameboard[i][j] = true;
-            }
+        pentadecathlon[1][1] = false;
+        pentadecathlon[1][6] = false;
+        return pentadecathlon;
+    }
+
+    private boolean[][] getGliderAsArray() {
+        boolean[][] glider = new boolean[3][3];
+        glider[0][1] = true;
+        glider[1][2] = true;
+        Arrays.fill(glider[2], true);
+        return glider;
+    }
+
+    private boolean[][] getLightweightSpaceshipAsArray() {
+        boolean[][] lightweightSpaceship = new boolean[4][5];
+        Arrays.fill(lightweightSpaceship[0], 1, 3, true);
+        Arrays.fill(lightweightSpaceship[1], 0, 4, true);
+        Arrays.fill(lightweightSpaceship[2], true);
+        Arrays.fill(lightweightSpaceship[3], 2, 4, true);
+        lightweightSpaceship[2][2] = false;
+        return lightweightSpaceship;
+    }
+
+    private boolean[][] getMiddleweightSpaceshipAsArray() {
+        boolean[][] middleweightSpaceship = new boolean[4][6];
+        Arrays.fill(middleweightSpaceship[0], 1, 4, true);
+        Arrays.fill(middleweightSpaceship[1], 0, 5, true);
+        Arrays.fill(middleweightSpaceship[2], 0, 6, true);
+        Arrays.fill(middleweightSpaceship[3], 3, 5, true);
+        middleweightSpaceship[2][3] = false;
+        return middleweightSpaceship;
+    }
+
+    private boolean[][] getHeavyweightSpaceshipAsArray() {
+        boolean[][] heavyweightSpaceship = new boolean[4][7];
+        Arrays.fill(heavyweightSpaceship[0], 1, 5, true);
+        Arrays.fill(heavyweightSpaceship[1], 0, 6, true);
+        Arrays.fill(heavyweightSpaceship[2], 0, 7, true);
+        Arrays.fill(heavyweightSpaceship[3], 4, 6, true);
+        heavyweightSpaceship[2][4] = false;
+        return heavyweightSpaceship;
+    }
+
+    public boolean[][] getPatternAsArray(Pattern pattern) {
+        switch (pattern) {
+            case BLINKER:
+                return getBlinkerAsArray();
+            case TOAD:
+                return getToadAsArray();
+            case BEACON:
+                return getBeaconAsArray();
+            case PULSAR:
+                return getPulsarAsArray();
+            case PENTADECATHLON:
+                return getPentadecathlonAsArray();
+            case GLIDER:
+                return getGliderAsArray();
+            case LIGHTWEIGHT_SPACESHIP:
+                return getLightweightSpaceshipAsArray();
+            case MIDDLEWEIGHT_SPACESHIP:
+                return getMiddleweightSpaceshipAsArray();
+            case HEAVYWEIGHT_SPACESHIP:
+                return getHeavyweightSpaceshipAsArray();
+        }
+        return null;
+    }
+
+    void drawPattern(boolean[][] pattern) {
+        for (int i = positionY; i < positionY + pattern.length; i++) {
+            System.arraycopy(pattern[i - positionY], 0, gameboard[i], positionX, positionX + pattern[0].length - positionX);
         }
     }
 
-    void drawPulsar() {
-        for (int j = positionX + 2; j < positionX + 5; j++) {
-            gameboard[positionY][j] = true;
-        }
-        for (int k = positionX + 8; k < positionX + 11; k++) {
-            gameboard[positionY][k] = true;
-        }
-        for (int i = positionY + 2; i < positionY + 5; i++) {
-            gameboard[i][positionX] = true;
-            gameboard[i][positionX + 5] = true;
-            gameboard[i][positionX + 7] = true;
-            gameboard[i][positionX + 12] = true;
-        }
-        for (int j = positionX + 2; j < positionX + 5; j++) {
-            gameboard[positionY + 5][j] = true;
-        }
-        for (int j = positionX + 8; j < positionX + 11; j++) {
-            gameboard[positionY + 5][j] = true;
-        }
-        for (int j = positionX + 2; j < positionX + 5; j++) {
-            gameboard[positionY + 7][j] = true;
-        }
-        for (int j = positionX + 8; j < positionX + 11; j++) {
-            gameboard[positionY + 7][j] = true;
-        }
-        for (int i = positionY + 8; i < positionY + 11; i++) {
-            gameboard[i][positionX] = true;
-            gameboard[i][positionX + 5] = true;
-            gameboard[i][positionX + 7] = true;
-            gameboard[i][positionX + 12] = true;
-        }
-        for (int j = positionX + 2; j < positionX + 5; j++) {
-            gameboard[positionY + 12][j] = true;
-        }
-        for (int j = positionX + 8; j < positionX + 11; j++) {
-            gameboard[positionY + 12][j] = true;
-        }
-    }
-
-    void drawPentadecathlon() {
-        for (int i = positionY; i < positionY + 3; i++) {
-            for (int j = positionX; j < positionX + 8; j++) {
-                gameboard[i][j] = true;
-            }
-        }
-        gameboard[positionY + 1][positionX + 1] = false;
-        gameboard[positionY + 1][positionX + 6] = false;
-    }
-
-    void drawGlider() {
-        gameboard[positionY][positionX + 1] = true;
-        gameboard[positionY + 1][positionX + 2] = true;
-        for (int j = positionX; j < positionX + 3; j++) {
-            gameboard[positionY + 2][j] = true;
-        }
-    }
-
-    void drawLightweightSpaceship() {
-        for (int j = positionX + 1; j < positionX + 3; j++) {
-            gameboard[positionY][j] = true;
-        }
-        for (int j = positionX; j < positionX + 4; j++) {
-            gameboard[positionY + 1][j] = true;
-        }
-        for (int j = positionX; j < positionX + 5; j++) {
-            gameboard[positionY + 2][j] = true;
-        }
-        for (int j = positionX + 2; j < positionX + 4; j++) {
-            gameboard[positionY + 3][j] = true;
-        }
-        gameboard[positionY + 2][positionX + 2] = false;
-    }
-
-    void drawMiddleweightSpaceship() {
-        for (int j = positionX + 1; j < positionX + 4; j++) {
-            gameboard[positionY][j] = true;
-        }
-        for (int j = positionX; j < positionX + 5; j++) {
-            gameboard[positionY + 1][j] = true;
-        }
-        for (int j = positionX; j < positionX + 6; j++) {
-            gameboard[positionY + 2][j] = true;
-        }
-        for (int j = positionX + 3; j < positionX + 5; j++) {
-            gameboard[positionY + 3][j] = true;
-        }
-        gameboard[positionY + 2][positionX + 3] = false;
-    }
-
-    void drawHeavyWeightSpaceship() {
-        for (int j = positionX + 1; j < positionX + 5; j++) {
-            gameboard[positionY][j] = true;
-        }
-        for (int j = positionX; j < positionX + 6; j++) {
-            gameboard[positionY + 1][j] = true;
-        }
-        for (int j = positionX; j < positionX + 7; j++) {
-            gameboard[positionY + 2][j] = true;
-        }
-        for (int j = positionX + 4; j < positionX + 6; j++) {
-            gameboard[positionY + 3][j] = true;
-        }
-        gameboard[positionY + 2][positionX + 4] = false;
-    }
-
-    void drawOwnPattern(boolean[][] ownPattern) {
-        for (int i = positionY; i < positionY + ownPattern.length; i++) {
-            for (int j = positionX; j < positionX + ownPattern[0].length; j++) {
-                gameboard[i][j] = ownPattern[i-positionY][j-positionX];
-            }
-        }
-    }
 }

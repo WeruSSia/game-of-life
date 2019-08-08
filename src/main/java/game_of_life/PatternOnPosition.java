@@ -4,15 +4,20 @@ import java.util.Objects;
 
 public class PatternOnPosition {
 
-    private Pattern pattern;
+    private boolean[][] pattern;
     private Position position;
 
     public PatternOnPosition(Pattern pattern, Position position) {
-        this.pattern = pattern;
+        this.pattern = new PatternDrawer().getPatternAsArray(pattern);
         this.position = position;
     }
 
-    public Pattern getPattern() {
+    public PatternOnPosition(boolean[][] ownPattern, Position position) {
+        this.pattern = ownPattern;
+        this.position = position;
+    }
+
+    public boolean[][] getPattern() {
         return pattern;
     }
 

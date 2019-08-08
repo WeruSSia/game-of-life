@@ -6,7 +6,6 @@ public class GameboardFillingSettings {
 
     private Integer percentageOfRandomFilling;
     private Set<PatternOnPosition> patternsOnPositions;
-    private OwnPattern ownPattern;
 
     public GameboardFillingSettings(Integer percentageOfRandomFilling) throws Exception {
         if (percentageOfRandomFilling < 0 || percentageOfRandomFilling > 100) {
@@ -22,10 +21,6 @@ public class GameboardFillingSettings {
         this.patternsOnPositions = patternsOnPositions;
     }
 
-    public GameboardFillingSettings(OwnPattern ownPattern) {
-        this.ownPattern = ownPattern;
-    }
-
     public Integer getPercentageOfRandomFilling() {
         return percentageOfRandomFilling;
     }
@@ -34,7 +29,4 @@ public class GameboardFillingSettings {
         return patternsOnPositions;
     }
 
-    public OwnPattern getOwnPattern() {
-        return ownPattern;
-    }
 }

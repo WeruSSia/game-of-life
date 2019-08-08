@@ -16,10 +16,8 @@ class GameboardFiller {
     void fill() {
         if (gameboardFillingSettings.getPercentageOfRandomFilling() != null) {
             fillRandomly(gameboardFillingSettings.getPercentageOfRandomFilling());
-        } else if (gameboardFillingSettings.getPatternsOnPositions() != null) {
-            fillWithSetOfPatterns(gameboardFillingSettings.getPatternsOnPositions());
         } else {
-            fillWithOwnPatternOnPositions(gameboardFillingSettings.getOwnPattern());
+            fillWithSetOfPatterns(gameboardFillingSettings.getPatternsOnPositions());
         }
     }
 
@@ -36,46 +34,7 @@ class GameboardFiller {
 
     private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
         for (PatternOnPosition patternOnPosition : patternsOnPositions) {
-            drawPattern(patternOnPosition.getPattern(), patternOnPosition.getPosition());
-        }
-    }
-
-    private void fillWithOwnPatternOnPositions(OwnPattern ownPatternOnPositions) {
-        for (Position position : ownPatternOnPositions.getPositions()) {
-            new PatternDrawer(gameboard, position).drawOwnPattern(ownPatternOnPositions.getPattern());
-        }
-    }
-
-    private void drawPattern(Pattern pattern, Position position) {
-        PatternDrawer patternDrawer = new PatternDrawer(gameboard, position);
-        switch (pattern) {
-            case BLINKER:
-                patternDrawer.drawBlinker();
-                break;
-            case TOAD:
-                patternDrawer.drawToad();
-                break;
-            case BEACON:
-                patternDrawer.drawBeacon();
-                break;
-            case PULSAR:
-                patternDrawer.drawPulsar();
-                break;
-            case PENTADECATHLON:
-                patternDrawer.drawPentadecathlon();
-                break;
-            case GLIDER:
-                patternDrawer.drawGlider();
-                break;
-            case LIGHTWEIGHT_SPACESHIP:
-                patternDrawer.drawLightweightSpaceship();
-                break;
-            case MIDDLEWEIGHT_SPACESHIP:
-                patternDrawer.drawMiddleweightSpaceship();
-                break;
-            case HEAVYWEIGHT_SPACESHIP:
-                patternDrawer.drawHeavyWeightSpaceship();
-                break;
+            new PatternDrawer(gameboard, patternOnPosition.getPosition()).drawPattern(patternOnPosition.getPattern());
         }
     }
 }
