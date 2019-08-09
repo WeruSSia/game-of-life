@@ -12,7 +12,12 @@ public class PatternOnPosition {
         this.position = position;
     }
 
-    public PatternOnPosition(boolean[][] ownPattern, Position position) {
+    public PatternOnPosition(boolean[][] ownPattern, Position position) throws Exception {
+        for (boolean[] row : ownPattern) {
+            if (row.length != ownPattern[0].length) {
+                throw new Exception("Row sizes are not equal");
+            }
+        }
         this.pattern = ownPattern;
         this.position = position;
     }

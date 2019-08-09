@@ -15,7 +15,10 @@ public class GameModificationSettings {
         this.sFactors = getSFactors(this.gameModificationCode[1]);
     }
 
-    public GameModificationSettings(String gameModificationCode) {
+    public GameModificationSettings(String gameModificationCode) throws Exception {
+        if (!gameModificationCode.matches("[0-8]*[/][0-8]*")) {
+            throw new Exception("Incorrect code.");
+        }
         this.gameModificationCode = gameModificationCode.split("/");
         this.bFactors = getBFactors(this.gameModificationCode[0]);
         this.sFactors = getSFactors(this.gameModificationCode[1]);

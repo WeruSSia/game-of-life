@@ -21,6 +21,10 @@ public class GameOfLife {
         System.out.println(toString());
         evolve();
         System.out.println(toString());
+        evolve();
+        System.out.println(toString());
+        evolve();
+        System.out.println(toString());
     }
 
     private void generateGameboard(int logicWidth, int logicHeight) {
