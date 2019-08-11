@@ -17,4 +17,6 @@ public class Position {
     public int getPositionY() {
         return positionY;
     }
+
+    //todo public getters without padding, private getters with padding
 }

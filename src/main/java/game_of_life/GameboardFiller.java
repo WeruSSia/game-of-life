@@ -34,7 +34,7 @@ class GameboardFiller {
 
     private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
         for (PatternOnPosition patternOnPosition : patternsOnPositions) {
-            new PatternDrawer(gameboard, patternOnPosition.getPosition()).drawPattern(patternOnPosition.getPattern());
+            new PatternDrawer(gameboard, patternOnPosition.getPosition()).drawPattern(patternOnPosition.getPattern()); //todo this operation not from PatternDrawer
         }
     }
 }

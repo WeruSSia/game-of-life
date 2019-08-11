@@ -19,6 +19,8 @@ public class GameboardResolutionSettings {
         this.logicHeight = height / cellResolution;
     }
 
+    //todo generate getters
+
     public int getLogicWidth() {
         return logicWidth;
     }

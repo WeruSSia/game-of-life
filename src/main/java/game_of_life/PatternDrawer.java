@@ -118,7 +118,7 @@ class PatternDrawer {
         return heavyweightSpaceship;
     }
 
-    public boolean[][] getPatternAsArray(Pattern pattern) {
+    public boolean[][] getPatternAsArray(Pattern pattern) { //todo should not be public
         switch (pattern) {
             case BLINKER:
                 return getBlinkerAsArray();

@@ -16,15 +16,12 @@ public class GameOfLife {
     }
 
     public void play() {
-        generateGameboard(gameboardResolutionSettings.getLogicWidth(), gameboardResolutionSettings.getLogicHeight());
+        generateGameboard(gameboardResolutionSettings.getLogicWidth(), gameboardResolutionSettings.getLogicHeight()); //todo whole object can be a parameter
         new GameboardFiller(gameboard, gameboardFillingSettings).fill();
-        System.out.println(toString());
-        evolve();
-        System.out.println(toString());
-        evolve();
-        System.out.println(toString());
-        evolve();
-        System.out.println(toString());
+        for (int i = 0; i < 20; i++) {
+            System.out.println(toString());
+            evolve();
+        }
     }
 
     private void generateGameboard(int logicWidth, int logicHeight) {
