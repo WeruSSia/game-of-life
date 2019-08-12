@@ -8,7 +8,7 @@ public class PatternOnPosition {
     private Position position;
 
     public PatternOnPosition(Pattern pattern, Position position) {
-        this.pattern = new PatternDrawer().getPatternAsArray(pattern);
+        this.pattern = new PatternGenerator().getPatternAsArray(pattern);
         this.position = position;
     }
 

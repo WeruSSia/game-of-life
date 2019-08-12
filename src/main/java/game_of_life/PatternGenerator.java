@@ -2,19 +2,9 @@ package game_of_life;
 
 import java.util.Arrays;
 
-class PatternDrawer {
+class PatternGenerator {
 
-    private boolean[][] gameboard;
-    private int positionX;
-    private int positionY;
-
-    PatternDrawer() {
-    }
-
-    PatternDrawer(boolean[][] gameboard, Position position) {
-        this.gameboard = gameboard;
-        this.positionX = position.getPositionX();
-        this.positionY = position.getPositionY();
+    PatternGenerator() {
     }
 
     private boolean[][] getBlinkerAsArray() {
@@ -118,7 +108,7 @@ class PatternDrawer {
         return heavyweightSpaceship;
     }
 
-    public boolean[][] getPatternAsArray(Pattern pattern) { //todo should not be public
+    boolean[][] getPatternAsArray(Pattern pattern) {
         switch (pattern) {
             case BLINKER:
                 return getBlinkerAsArray();
@@ -141,11 +131,4 @@ class PatternDrawer {
         }
         return null;
     }
-
-    void drawPattern(boolean[][] pattern) {
-        for (int i = positionY; i < positionY + pattern.length; i++) {
-            System.arraycopy(pattern[i - positionY], 0, gameboard[i], positionX, positionX + pattern[0].length - positionX);
-        }
-    }
-
 }

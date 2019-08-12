@@ -34,7 +34,12 @@ class GameboardFiller {
 
     private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
         for (PatternOnPosition patternOnPosition : patternsOnPositions) {
-            new PatternDrawer(gameboard, patternOnPosition.getPosition()).drawPattern(patternOnPosition.getPattern()); //todo this operation not from PatternDrawer
+            boolean[][] pattern = patternOnPosition.getPattern();
+            int positionX = patternOnPosition.getPosition().getPositionX();
+            int positionY = patternOnPosition.getPosition().getPositionY();
+            for (int i = positionY; i < positionY + pattern.length; i++) {
+                System.arraycopy(pattern[i - positionY], 0, gameboard[i], positionX, positionX + pattern[0].length - positionX);
+            }
         }
     }
 }
