@@ -7,12 +7,12 @@ public class GameOfLife {
 
     private GameboardResolutionSettings gameboardResolutionSettings;
     private GameboardFillingSettings gameboardFillingSettings;
-    private GameModificationSettings gameModificationSettings;
+    private GameVariationSettings gameVariationSettings;
 
-    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings, GameModificationSettings gameModificationSettings) {
+    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings, GameVariationSettings gameVariationSettings) {
         this.gameboardResolutionSettings = gameboardResolutionSettings;
         this.gameboardFillingSettings = gameboardFillingSettings;
-        this.gameModificationSettings = gameModificationSettings;
+        this.gameVariationSettings = gameVariationSettings;
     }
 
     public void play() {
@@ -39,7 +39,7 @@ public class GameOfLife {
 
     private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
         int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-        return gameModificationSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
+        return gameVariationSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
     }
 
     private boolean[][] copyGameboard() {
@@ -86,7 +86,7 @@ public class GameOfLife {
             boolean[] row = gameboard[i];
             for (int j = BOARD_PADDING; j < row.length - BOARD_PADDING; j++) {
                 boolean cell = row[j];
-                stringBuilder.append(cell ? "0" : ".").append(" ");
+                stringBuilder.append(cell ? "0" : ".").append("  ");
             }
             stringBuilder.append("\n");
         }

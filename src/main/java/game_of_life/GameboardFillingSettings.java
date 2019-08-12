@@ -7,7 +7,7 @@ public class GameboardFillingSettings {
     private Integer percentageOfRandomFilling;
     private Set<PatternOnPosition> patternsOnPositions;
 
-    public GameboardFillingSettings(Integer percentageOfRandomFilling) throws Exception {
+    public GameboardFillingSettings(int percentageOfRandomFilling) throws Exception {
         if (percentageOfRandomFilling < 0 || percentageOfRandomFilling > 100) {
             throw new Exception("Percentage must be between 0% and 100%");
         }
