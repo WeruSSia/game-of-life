@@ -2,6 +2,7 @@ package game_of_life;
 
 public class Position {
 
+    //todo "padding" in the names
     private int positionX;
     private int positionY;
 
@@ -10,6 +11,7 @@ public class Position {
         this.positionY = positionY + GameOfLife.BOARD_PADDING;
     }
 
+    //todo not private
     private int getPositionXWithPadding() {
         return positionX;
     }
