@@ -10,13 +10,19 @@ public class Position {
         this.positionY = positionY + GameOfLife.BOARD_PADDING;
     }
 
-    public int getPositionX() {
+    private int getPositionXWithPadding() {
         return positionX;
     }
 
-    public int getPositionY() {
+    private int getPositionYWithPadding() {
         return positionY;
     }
 
-    //todo public getters without padding, private getters with padding
+    public int getPositionX() {
+        return positionX - GameOfLife.BOARD_PADDING;
+    }
+
+    public int getPositionY() {
+        return positionY - GameOfLife.BOARD_PADDING;
+    }
 }
