@@ -7,7 +7,7 @@ public class GameboardFillingSettings {
     private Integer percentageOfRandomFilling;
     private Set<PatternOnPosition> patternsOnPositions;
 
-    public GameboardFillingSettings(Integer percentageOfRandomFilling) throws Exception {//todo do not allow null
+    public GameboardFillingSettings(Integer percentageOfRandomFilling) throws Exception {
         if (percentageOfRandomFilling < 0 || percentageOfRandomFilling > 100) {
             throw new Exception("Percentage must be between 0% and 100%");
         }
@@ -15,7 +15,7 @@ public class GameboardFillingSettings {
     }
 
     public GameboardFillingSettings(Set<PatternOnPosition> patternsOnPositions) throws Exception {
-        if (patternsOnPositions.isEmpty()) {//todo rather check null
+        if (patternsOnPositions == null) {
             throw new Exception("Patterns set is empty!");
         }
         this.patternsOnPositions = patternsOnPositions;
