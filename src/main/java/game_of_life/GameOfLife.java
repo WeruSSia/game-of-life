@@ -16,7 +16,7 @@ public class GameOfLife {
     }
 
     public void play() {
-        generateGameboard(gameboardResolutionSettings.getLogicWidth(), gameboardResolutionSettings.getLogicHeight()); //todo whole object can be a parameter
+        generateGameboard(gameboardResolutionSettings);
         new GameboardFiller(gameboard, gameboardFillingSettings).fill();
         for (int i = 0; i < 20; i++) {
             System.out.println(toString());
@@ -24,8 +24,8 @@ public class GameOfLife {
         }
     }
 
-    private void generateGameboard(int logicWidth, int logicHeight) {
-        gameboard = new boolean[logicWidth + (2 * BOARD_PADDING)][logicHeight + (2 * BOARD_PADDING)];
+    private void generateGameboard(GameboardResolutionSettings gameboardResolutionSettings) {
+        gameboard = new boolean[gameboardResolutionSettings.getLogicWidth() + (2 * BOARD_PADDING)][gameboardResolutionSettings.getLogicHeight() + (2 * BOARD_PADDING)];
     }
 
     private void evolve() {

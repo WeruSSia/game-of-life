@@ -20,9 +20,9 @@ public class GameVariationSettings {
         this.sFactors = getFactors(gameVariationCode.split("/")[1]);
     }
 
-    private Set<Integer> getFactors(String sideOfVariationCode){
+    private Set<Integer> getFactors(String sideOfVariationCode) {
         Set<Integer> factors = new HashSet<>();
-        for(int i=1; i<sideOfVariationCode.length();i++){
+        for (int i = 1; i < sideOfVariationCode.length(); i++) {
             factors.add(Character.getNumericValue(sideOfVariationCode.charAt(i)));
         }
         return factors;
