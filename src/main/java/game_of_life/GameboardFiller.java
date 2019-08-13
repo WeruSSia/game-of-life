@@ -32,15 +32,20 @@ class GameboardFiller {
         }
     }
 
-    //todo catch OutOfBoundException
     private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
         for (PatternOnPosition patternOnPosition : patternsOnPositions) {
             boolean[][] pattern = patternOnPosition.getPattern();
             int positionX = patternOnPosition.getPosition().getPositionXWithPadding();
             int positionY = patternOnPosition.getPosition().getPositionYWithPadding();
-            for (int i = positionY; i < positionY + pattern.length; i++) {
-                System.arraycopy(pattern[i - positionY], 0, gameboard[i], positionX, positionX + pattern[0].length - positionX);
+            try {
+                for (int i = positionY; i < positionY + pattern.length; i++) {
+                    System.arraycopy(pattern[i - positionY], 0, gameboard[i], positionX, positionX + pattern[0].length - positionX);
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("The position is out of gameboard bounds!");
+                return;
             }
+
         }
     }
 }
