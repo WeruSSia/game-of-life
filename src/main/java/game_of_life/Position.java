@@ -2,29 +2,27 @@ package game_of_life;
 
 public class Position {
 
-    //todo "padding" in the names
     private int positionX;
     private int positionY;
 
     public Position(int positionX, int positionY) {
-        this.positionX = positionX + GameOfLife.BOARD_PADDING;
-        this.positionY = positionY + GameOfLife.BOARD_PADDING;
+        this.positionX = positionX;
+        this.positionY = positionY;
     }
 
-    //todo not private
-    private int getPositionXWithPadding() {
-        return positionX;
+    int getPositionXWithPadding() {
+        return positionX + GameOfLife.BOARD_PADDING;
     }
 
-    private int getPositionYWithPadding() {
-        return positionY;
+    int getPositionYWithPadding() {
+        return positionY + GameOfLife.BOARD_PADDING;
     }
 
     public int getPositionX() {
-        return positionX - GameOfLife.BOARD_PADDING;
+        return positionX;
     }
 
     public int getPositionY() {
-        return positionY - GameOfLife.BOARD_PADDING;
+        return positionY;
     }
 }
