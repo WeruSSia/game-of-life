@@ -28,55 +28,12 @@ public class GameOfLife {
         gameboard = new boolean[gameboardResolutionSettings.getLogicWidth() + (2 * BOARD_PADDING)][gameboardResolutionSettings.getLogicHeight() + (2 * BOARD_PADDING)];
     }
 
-    private void evolve() {
-        boolean[][] gameboardCopy = copyGameboard();
-        for (int i = 1; i < gameboard.length - 1; i++) {
-            for (int j = 1; j < gameboard[i].length - 1; j++) {
-                gameboard[i][j] = willSurviveToNextGeneration(gameboardCopy, i, j);
-            }
-        }
-    }
-
-    private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
-        int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-        return gameVariationSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
-    }
-
-    private boolean[][] copyGameboard() {
+    boolean[][] getGameboardCopy() {
         boolean[][] gameboardCopy = new boolean[gameboard.length][gameboard[0].length];
         for (int i = 0; i < gameboard.length; i++) {
             System.arraycopy(gameboard[i], 0, gameboardCopy[i], 0, gameboard[i].length);
         }
         return gameboardCopy;
-    }
-
-    private int countLiveNeighbours(boolean[][] gameboardCopy, int i, int j) {
-        int counter = 0;
-        if (gameboardCopy[i][j - 1]) {
-            counter++;
-        }
-        if (gameboardCopy[i][j + 1]) {
-            counter++;
-        }
-        if (gameboardCopy[i - 1][j]) {
-            counter++;
-        }
-        if (gameboardCopy[i - 1][j - 1]) {
-            counter++;
-        }
-        if (gameboardCopy[i - 1][j + 1]) {
-            counter++;
-        }
-        if (gameboardCopy[i + 1][j]) {
-            counter++;
-        }
-        if (gameboardCopy[i + 1][j - 1]) {
-            counter++;
-        }
-        if (gameboardCopy[i + 1][j + 1]) {
-            counter++;
-        }
-        return counter;
     }
 
     @Override
