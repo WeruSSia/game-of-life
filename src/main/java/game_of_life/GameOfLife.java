@@ -10,18 +10,20 @@ public class GameOfLife {
     private GameboardResolutionSettings gameboardResolutionSettings;
     private GameboardFillingSettings gameboardFillingSettings;
     private GameVariationSettings gameVariationSettings;
+    private GameboardRefreshingSettings gameboardRefreshingSettings;
 
-    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings, GameVariationSettings gameVariationSettings) {
+    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings, GameVariationSettings gameVariationSettings, GameboardRefreshingSettings gameboardRefreshingSettings) {
         this.gameboardResolutionSettings = gameboardResolutionSettings;
         this.gameboardFillingSettings = gameboardFillingSettings;
         this.gameVariationSettings = gameVariationSettings;
+        this.gameboardRefreshingSettings=gameboardRefreshingSettings;
     }
 
     public void play() {
         generateGameboard(gameboardResolutionSettings);
         new GameboardFiller(gameboard, gameboardFillingSettings).fill();
         Timer timer = new Timer();
-        timer.schedule(new Evolver(gameVariationSettings, gameboard), 0, 1000);
+        timer.schedule(new Evolver(gameVariationSettings, gameboard), gameboardRefreshingSettings.getFrequency(), gameboardRefreshingSettings.getFrequency());
     }
 
     private void generateGameboard(GameboardResolutionSettings gameboardResolutionSettings) {
