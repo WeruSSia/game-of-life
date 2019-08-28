@@ -6,18 +6,18 @@ import java.util.Set;
 class GameboardFiller {
 
     private boolean[][] gameboard;
-    private GameboardFillingSettings gameboardFillingSettings;
+    private GameSettings gameSettings;
 
-    GameboardFiller(boolean[][] gameboard, GameboardFillingSettings gameboardFillingSettings) {
+    GameboardFiller(boolean[][] gameboard, GameSettings gameSettings) {
         this.gameboard = gameboard;
-        this.gameboardFillingSettings = gameboardFillingSettings;
+        this.gameSettings = gameSettings;
     }
 
     void fill() {
-        if (gameboardFillingSettings.getPercentageOfRandomFilling() != null) {
-            fillRandomly(gameboardFillingSettings.getPercentageOfRandomFilling());
+        if (gameSettings.getPercentageOfRandomFilling() != null) {
+            fillRandomly(gameSettings.getPercentageOfRandomFilling());
         } else {
-            fillWithSetOfPatterns(gameboardFillingSettings.getPatternsOnPositions());
+            fillWithSetOfPatterns(gameSettings.getPatternsOnPositions());
         }
     }
 
@@ -39,7 +39,7 @@ class GameboardFiller {
         int padding = 2 * GameOfLife.BOARD_PADDING;
         final boolean exceedsLeftEdge = positionX < 0;
         final boolean exceedsRightEdge = positionX + pattern[0].length > gameboard[0].length - padding;
-        final boolean exceedsUpperEdge = positionY<0;
+        final boolean exceedsUpperEdge = positionY < 0;
         final boolean exceedsBottomEdge = positionY + pattern.length > gameboard.length - padding;
         return !exceedsLeftEdge && !exceedsUpperEdge && !exceedsRightEdge && !exceedsBottomEdge;
     }

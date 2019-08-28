@@ -7,26 +7,20 @@ public class GameOfLife {
     private boolean[][] gameboard;
     final static int BOARD_PADDING = 5;
 
-    private GameboardResolutionSettings gameboardResolutionSettings;
-    private GameboardFillingSettings gameboardFillingSettings;
-    private GameVariationSettings gameVariationSettings;
-    private GameboardRefreshingSettings gameboardRefreshingSettings;
+    private GameSettings gameSettings;
 
-    public GameOfLife(GameboardResolutionSettings gameboardResolutionSettings, GameboardFillingSettings gameboardFillingSettings, GameVariationSettings gameVariationSettings, GameboardRefreshingSettings gameboardRefreshingSettings) {
-        this.gameboardResolutionSettings = gameboardResolutionSettings;
-        this.gameboardFillingSettings = gameboardFillingSettings;
-        this.gameVariationSettings = gameVariationSettings;
-        this.gameboardRefreshingSettings=gameboardRefreshingSettings;
+    public GameOfLife(GameSettings gameSettings) {
+        this.gameSettings = gameSettings;
     }
 
     public void play() {
-        generateGameboard(gameboardResolutionSettings);
-        new GameboardFiller(gameboard, gameboardFillingSettings).fill();
+        generateGameboard(gameSettings);
+        new GameboardFiller(gameboard, gameSettings).fill();
         Timer timer = new Timer();
-        timer.schedule(new Evolver(gameVariationSettings, gameboard), gameboardRefreshingSettings.getPeriodInMilliseconds(), gameboardRefreshingSettings.getPeriodInMilliseconds());
+        timer.schedule(new Evolver(gameSettings, gameboard), gameSettings.getRefreshingPeriodInMilliseconds(), gameSettings.getRefreshingPeriodInMilliseconds());
     }
 
-    private void generateGameboard(GameboardResolutionSettings gameboardResolutionSettings) {
-        gameboard = new boolean[gameboardResolutionSettings.getLogicWidth() + (2 * BOARD_PADDING)][gameboardResolutionSettings.getLogicHeight() + (2 * BOARD_PADDING)];
+    private void generateGameboard(GameSettings gameSettings) {
+        gameboard = new boolean[gameSettings.getLogicHeight() + (2 * BOARD_PADDING)][gameSettings.getLogicWidth() + (2 * BOARD_PADDING)];
     }
 }

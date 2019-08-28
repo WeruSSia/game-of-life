@@ -4,11 +4,11 @@ import java.util.TimerTask;
 
 public class Evolver extends TimerTask {
 
-    private GameVariationSettings gameVariationSettings;
+    private GameSettings gameSettings;
     private boolean[][] gameboard;
 
-    Evolver(GameVariationSettings gameVariationSettings, boolean[][] gameboard) {
-        this.gameVariationSettings = gameVariationSettings;
+    Evolver(GameSettings gameSettings, boolean[][] gameboard) {
+        this.gameSettings = gameSettings;
         this.gameboard = gameboard;
     }
 
@@ -37,7 +37,7 @@ public class Evolver extends TimerTask {
 
     private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
         int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-        return gameVariationSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
+        return gameSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
     }
 
 
