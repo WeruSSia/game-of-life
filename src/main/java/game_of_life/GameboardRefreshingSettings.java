@@ -2,17 +2,17 @@ package game_of_life;
 
 public class GameboardRefreshingSettings {
 
-    private int frequency;
+    private int periodInMilliseconds;
 
     public GameboardRefreshingSettings(){
-        this.frequency = 500;
+        this.periodInMilliseconds = 500;
     }
 
-    public GameboardRefreshingSettings(int frequency){
-        this.frequency=frequency;
+    public GameboardRefreshingSettings(int periodInMilliseconds){
+        this.periodInMilliseconds = periodInMilliseconds;
     }
 
-    int getFrequency(){
-        return frequency;
+    int getPeriodInMilliseconds(){
+        return periodInMilliseconds;
     }
 }

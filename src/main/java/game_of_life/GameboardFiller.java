@@ -32,16 +32,16 @@ class GameboardFiller {
         }
     }
 
-    private boolean IsPositionOnGameboard(PatternOnPosition patternOnPosition) {
+    private boolean isPositionOnGameboard(PatternOnPosition patternOnPosition) {
         boolean[][] pattern = patternOnPosition.getPattern();
         int positionX = patternOnPosition.getPosition().getPositionX();
         int positionY = patternOnPosition.getPosition().getPositionY();
         int padding = 2 * GameOfLife.BOARD_PADDING;
-        if (positionX >= 0 && positionY >= 0 && positionX + pattern[0].length <= gameboard[0].length - padding && positionY + pattern.length <= gameboard.length - padding) {
-                return true;
-        }else{
-            return false;
-        }
+        final boolean exceedsLeftEdge = positionX < 0;
+        final boolean exceedsRightEdge = positionX + pattern[0].length > gameboard[0].length - padding;
+        final boolean exceedsUpperEdge = positionY<0;
+        final boolean exceedsBottomEdge = positionY + pattern.length > gameboard.length - padding;
+        return !exceedsLeftEdge && !exceedsUpperEdge && !exceedsRightEdge && !exceedsBottomEdge;
     }
 
     private void fillWithSetOfPatterns(Set<PatternOnPosition> patternsOnPositions) {
@@ -49,7 +49,7 @@ class GameboardFiller {
             boolean[][] pattern = patternOnPosition.getPattern();
             int positionX = patternOnPosition.getPosition().getPositionXWithPadding();
             int positionY = patternOnPosition.getPosition().getPositionYWithPadding();
-            if (IsPositionOnGameboard(patternOnPosition)) {
+            if (isPositionOnGameboard(patternOnPosition)) {
                 for (int i = positionY; i < positionY + pattern.length; i++) {
                     System.arraycopy(pattern[i - positionY], 0, gameboard[i], positionX, positionX + pattern[0].length - positionX);
                 }

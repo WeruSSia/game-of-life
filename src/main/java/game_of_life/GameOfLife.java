@@ -23,7 +23,7 @@ public class GameOfLife {
         generateGameboard(gameboardResolutionSettings);
         new GameboardFiller(gameboard, gameboardFillingSettings).fill();
         Timer timer = new Timer();
-        timer.schedule(new Evolver(gameVariationSettings, gameboard), gameboardRefreshingSettings.getFrequency(), gameboardRefreshingSettings.getFrequency());
+        timer.schedule(new Evolver(gameVariationSettings, gameboard), gameboardRefreshingSettings.getPeriodInMilliseconds(), gameboardRefreshingSettings.getPeriodInMilliseconds());
     }
 
     private void generateGameboard(GameboardResolutionSettings gameboardResolutionSettings) {
