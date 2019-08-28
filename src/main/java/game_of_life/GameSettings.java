@@ -107,11 +107,11 @@ public class GameSettings {
         this.sFactors = getFactors(gameVariationCode.split("/")[1]);
     }
 
-    public int getLogicWidth() {
+    int getLogicWidth() {
         return gameboardWidth / cellResolution;
     }
 
-    public int getLogicHeight() {
+    int getLogicHeight() {
         return gameboardHeight / cellResolution;
     }
 }

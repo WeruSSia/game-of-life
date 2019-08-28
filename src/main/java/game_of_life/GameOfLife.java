@@ -6,7 +6,6 @@ public class GameOfLife {
 
     private boolean[][] gameboard;
     final static int BOARD_PADDING = 5;
-
     private GameSettings gameSettings;
 
     public GameOfLife(GameSettings gameSettings) {

@@ -4,9 +4,6 @@ import java.util.Arrays;
 
 class PatternGenerator {
 
-    PatternGenerator() {
-    }
-
     private boolean[][] getBlinkerAsArray() {
         boolean[][] blinker = new boolean[1][3];
         Arrays.fill(blinker[0], true);

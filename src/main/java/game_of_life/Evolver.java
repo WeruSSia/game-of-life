@@ -2,7 +2,7 @@ package game_of_life;
 
 import java.util.TimerTask;
 
-public class Evolver extends TimerTask {
+class Evolver extends TimerTask {
 
     private GameSettings gameSettings;
     private boolean[][] gameboard;
