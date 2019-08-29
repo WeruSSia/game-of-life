@@ -26,14 +26,6 @@ public class GameSettings {
         return factors;
     }
 
-    boolean willSurvive(boolean cell, int numberOfNeighbours) {
-        if (cell) {
-            return bFactors.contains(numberOfNeighbours);
-        } else {
-            return sFactors.contains(numberOfNeighbours);
-        }
-    }
-
     public int getRefreshingPeriodInMilliseconds() {
         return refreshingPeriodInMilliseconds;
     }
@@ -119,5 +111,13 @@ public class GameSettings {
 
     int getLogicHeight() {
         return gameboardHeight / cellResolution;
+    }
+
+    public Set<Integer> getbFactors() {
+        return bFactors;
+    }
+
+    public Set<Integer> getsFactors() {
+        return sFactors;
     }
 }

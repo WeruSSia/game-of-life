@@ -37,7 +37,7 @@ class Evolver extends TimerTask {
 
     private boolean willSurviveToNextGeneration(boolean[][] gameboardCopy, int i, int j) {
         int numberOfNeighbours = countLiveNeighbours(gameboardCopy, i, j);
-        return gameSettings.willSurvive(gameboardCopy[i][j], numberOfNeighbours);
+        return willSurvive(gameboardCopy[i][j], numberOfNeighbours);
     }
 
 
@@ -68,6 +68,14 @@ class Evolver extends TimerTask {
             counter++;
         }
         return counter;
+    }
+
+    private boolean willSurvive(boolean cell, int numberOfNeighbours) {
+        if (cell) {
+            return gameSettings.getbFactors().contains(numberOfNeighbours);
+        } else {
+            return gameSettings.getsFactors().contains(numberOfNeighbours);
+        }
     }
 
     @Override
