@@ -109,6 +109,10 @@ public class GameSettings {
         this.sFactors = getFactors(gameVariationCode.split("/")[1]);
     }
 
+    public void setRefreshingFrequency(int refreshingFrequency) {
+        this.refreshingPeriodInMilliseconds = 1000 / refreshingFrequency;
+    }
+
     int getLogicWidth() {
         return gameboardWidth / cellResolution;
     }
