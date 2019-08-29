@@ -9,7 +9,7 @@ public class GameSettings {
     private int gameboardHeight = 40;
     private int cellResolution = 2;
 
-    private Integer percentageOfRandomFilling;
+    private Integer percentageOfRandomFilling = 50;
     private Set<PatternOnPosition> patternsOnPositions;
 
     private String gameVariationCode = "B23/S3";
@@ -50,6 +50,7 @@ public class GameSettings {
     }
 
     public void setPercentageOfRandomFilling(int percentageOfRandomFilling) throws Exception {
+        patternsOnPositions = null;
         if (percentageOfRandomFilling < 0 || percentageOfRandomFilling > 100) {
             throw new Exception("Percentage must be between 0% and 100%");
         }
@@ -61,6 +62,7 @@ public class GameSettings {
     }
 
     public void setPatternsOnPositions(Set<PatternOnPosition> patternsOnPositions) throws Exception {
+        percentageOfRandomFilling = null;
         if (patternsOnPositions == null) {
             throw new Exception("Patterns set is empty!");
         }
