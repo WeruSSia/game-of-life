@@ -16,7 +16,7 @@ public class GameSettings {
     private Set<Integer> bFactors = getFactors(gameVariationCode.split("/")[0]);
     private Set<Integer> sFactors = getFactors(gameVariationCode.split("/")[1]);
 
-    private int refreshingPeriodInMilliseconds = 500;
+    private long refreshingPeriodInMilliseconds = 500;
 
     private Set<Integer> getFactors(String sideOfVariationCode) {
         Set<Integer> factors = new HashSet<>();
@@ -26,11 +26,11 @@ public class GameSettings {
         return factors;
     }
 
-    public int getRefreshingPeriodInMilliseconds() {
+    public long getRefreshingPeriodInMilliseconds() {
         return refreshingPeriodInMilliseconds;
     }
 
-    public void setRefreshingPeriodInMilliseconds(int refreshingPeriodInMilliseconds) throws Exception {
+    public void setRefreshingPeriodInMilliseconds(long refreshingPeriodInMilliseconds) throws Exception {
         if (refreshingPeriodInMilliseconds <= 0) {
             throw new Exception("Refreshing period must be greater than 0!");
         }
@@ -101,7 +101,7 @@ public class GameSettings {
         this.sFactors = getFactors(gameVariationCode.split("/")[1]);
     }
 
-    public void setRefreshingFrequency(int refreshingFrequency) {
+    public void setRefreshingFrequency(long refreshingFrequency) {
         this.refreshingPeriodInMilliseconds = 1000 / refreshingFrequency;
     }
 
