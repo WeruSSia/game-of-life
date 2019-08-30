@@ -113,11 +113,11 @@ public class GameSettings {
         return gameboardHeight / cellResolution;
     }
 
-    public Set<Integer> getbFactors() {
+    Set<Integer> getbFactors() {
         return bFactors;
     }
 
-    public Set<Integer> getsFactors() {
+    Set<Integer> getsFactors() {
         return sFactors;
     }
 }
