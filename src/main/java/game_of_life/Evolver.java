@@ -6,17 +6,18 @@ class Evolver extends TimerTask {
 
     private GameSettings gameSettings;
     private boolean[][] gameboard;
-    private GameboardDrawer gameboardDrawer = new GameboardDrawer();
+    private GameboardDrawer gameboardDrawer;
 
     Evolver(GameSettings gameSettings, boolean[][] gameboard) {
         this.gameSettings = gameSettings;
         this.gameboard = gameboard;
+        gameboardDrawer = new GameboardDrawer(gameboard, gameSettings);
+        gameboardDrawer.prepareFrame();
     }
 
     @Override
     public void run() {
-        gameboardDrawer.draw(gameboard, gameSettings);
-        System.out.println(toString());
+        gameboardDrawer.repaintGameboard();
         evolve();
     }
 
