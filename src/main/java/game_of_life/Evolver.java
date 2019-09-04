@@ -12,7 +12,6 @@ class Evolver extends TimerTask {
         this.gameSettings = gameSettings;
         this.gameboard = gameboard;
         gameboardDrawer = new GameboardDrawer(gameboard, gameSettings);
-        gameboardDrawer.prepareFrame();
     }
 
     @Override
