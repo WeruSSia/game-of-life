@@ -27,7 +27,6 @@ class GameboardDrawer extends JPanel {
         jFrame.getRootPane().getActionMap().put("Cancel", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.dispose();
                 System.exit(0);
             }
         });
