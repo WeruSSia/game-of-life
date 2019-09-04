@@ -5,8 +5,8 @@ import java.util.Set;
 
 public class GameSettings {
 
-    private int gameboardWidth = 50;
-    private int gameboardHeight = 40;
+    private int gameboardWidth = 500;
+    private int gameboardHeight = 400;
     private int cellResolution = 2;
 
     private Integer percentageOfRandomFilling = 50;
@@ -16,7 +16,7 @@ public class GameSettings {
     private Set<Integer> bFactors = getFactors(gameVariationCode.split("/")[0]);
     private Set<Integer> sFactors = getFactors(gameVariationCode.split("/")[1]);
 
-    private long refreshingPeriodInMilliseconds = 500;
+    private long refreshingPeriodInMilliseconds = 100;
 
     private Set<Integer> getFactors(String sideOfVariationCode) {
         Set<Integer> factors = new HashSet<>();

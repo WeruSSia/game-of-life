@@ -2,6 +2,8 @@ package game_of_life;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 class GameboardDrawer extends JPanel {
 
@@ -15,14 +17,20 @@ class GameboardDrawer extends JPanel {
     }
 
     void prepareFrame() {
-        GameboardDrawer drawer = new GameboardDrawer(gameboard, gameSettings);
         jFrame.setSize(gameSettings.getGameboardWidth(), gameSettings.getGameboardHeight());
-        jFrame.getContentPane().add(drawer);
+        jFrame.getContentPane().add(new GameboardDrawer(gameboard, gameSettings));
         jFrame.setLocationRelativeTo(null);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setResizable(false);
         jFrame.setUndecorated(true);
         jFrame.setVisible(true);
+        jFrame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel");
+        jFrame.getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                System.exit(0);
+            }
+        });
     }
 
     void repaintGameboard() {
