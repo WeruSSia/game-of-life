@@ -3,15 +3,15 @@ package game_of_life;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class GameOfLifeTest {
 
     private GameOfLife gameOfLife;
-    private GameSettings defaultSettings = new GameSettings();
+    private GameSettings defaultSettings = mock(GameSettings.class);
 
     @Before
-    public void setUp(){
+    public void setUp() {
         gameOfLife = new GameOfLife(defaultSettings);
     }
 
