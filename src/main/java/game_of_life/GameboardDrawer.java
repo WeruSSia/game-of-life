@@ -41,9 +41,9 @@ class GameboardDrawer extends JFrame {
     private class Panel extends JPanel {
         public void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
-            setBackground(Color.BLACK);
+            setBackground(gameSettings.getBackgroundColor());
+            graphics.setColor(gameSettings.getCellColor());
             setLocationRelativeTo(null);
-            graphics.setColor(Color.GREEN);
             for (int i = GameOfLife.BOARD_PADDING; i < gameboard.length - GameOfLife.BOARD_PADDING; i++) {
                 for (int j = GameOfLife.BOARD_PADDING; j < gameboard[i].length - GameOfLife.BOARD_PADDING; j++) {
                     if (gameboard[i][j]) {

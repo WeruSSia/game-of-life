@@ -1,13 +1,14 @@
 package game_of_life;
 
+import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 
 public class GameSettings {
 
-    private int gameboardWidth = 500;
-    private int gameboardHeight = 400;
-    private int cellResolution = 2;
+    private int gameboardWidth = 1000;
+    private int gameboardHeight = 800;
+    private int cellResolution = 5;
 
     private Integer percentageOfRandomFilling = 50;
     private Set<PatternOnPosition> patternsOnPositions;
@@ -17,6 +18,9 @@ public class GameSettings {
     private Set<Integer> sFactors = getFactors(gameVariationCode.split("/")[1]);
 
     private long refreshingPeriodInMilliseconds = 100;
+
+    private Color backgroundColor = Color.BLACK;
+    private Color cellColor = Color.GREEN;
 
     private Set<Integer> getFactors(String sideOfVariationCode) {
         Set<Integer> factors = new HashSet<>();
@@ -103,6 +107,22 @@ public class GameSettings {
 
     public void setRefreshingFrequency(long refreshingFrequency) {
         this.refreshingPeriodInMilliseconds = 1000 / refreshingFrequency;
+    }
+
+    public Color getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public Color getCellColor() {
+        return cellColor;
+    }
+
+    public void setCellColor(Color cellColor) {
+        this.cellColor = cellColor;
     }
 
     int getLogicWidth() {
