@@ -29,6 +29,9 @@ BLINKER, TOAD, BEACON, PULSAR, PENTADECATHLON, GLIDER, LIGHTWEIGHT SPACESHIP, MI
 * game variation code: B23/S3 (Conway's),
 * refreshing period: 100ms.
 
+### Board generated with default settings:
+![](src/test/resources/defaultSettingsBoard.png)
+
 ### Defining own set of patterns:
 
 Create patterns set:
@@ -47,6 +50,7 @@ Create new own pattern:
 boolean[][] myPattern = {{true,true,true},{false,true,false},{true,true,true}};
 ```
 It would look like this:
+![](src/test/resources/myPattern.png)
 
 Add those patterns to the set:
 
@@ -71,6 +75,6 @@ Finally, play:
 ```
 new GameOfLife(gameSettings).play();
 ```
-
+![](src/test/resources/patternsOnBoard.png)
 
 Press the escape key to close the window.
