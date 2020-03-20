@@ -30,7 +30,7 @@ BLINKER, TOAD, BEACON, PULSAR, PENTADECATHLON, GLIDER, LIGHTWEIGHT SPACESHIP, MI
 * refreshing period: 100ms.
 
 ### Board generated with default settings:
-![](src/test/resources/defaultSettingsBoard.png)
+![](src/test/resources/defaultSettingsBoard.PNG)
 
 ### Defining own set of patterns:
 
@@ -50,7 +50,7 @@ Create new own pattern:
 boolean[][] myPattern = {{true,true,true},{false,true,false},{true,true,true}};
 ```
 It would look like this:
-![](src/test/resources/myPattern.png)
+![](src/test/resources/myPattern.PNG)
 
 Add those patterns to the set:
 
@@ -75,6 +75,6 @@ Finally, play:
 ```
 new GameOfLife(gameSettings).play();
 ```
-![](src/test/resources/patternsOnBoard.png)
+![](src/test/resources/patternsOnBoard.PNG)
 
 Press the escape key to close the window.
