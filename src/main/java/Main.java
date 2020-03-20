@@ -1,8 +1,7 @@
-import game_of_life.GameOfLife;
-import game_of_life.GameSettings;
+import game_of_life.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         GameSettings gameSettings = new GameSettings();
         new GameOfLife(gameSettings).play();
