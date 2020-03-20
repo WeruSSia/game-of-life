@@ -50,6 +50,7 @@ Create new own pattern:
 boolean[][] myPattern = {{true,true,true},{false,true,false},{true,true,true}};
 ```
 It would look like this:
+
 ![](src/test/resources/myPattern.PNG)
 
 Add those patterns to the set:
