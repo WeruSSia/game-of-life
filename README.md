@@ -39,7 +39,7 @@ Set<PatternOnPosition> patterns = new HashSet<>();
 Create new pattern from predefined patterns on position:
 
 ```
-PatternOnPosition newPattern = new PatternOnPosition(Pattern.BLINKER, new Position(2,2));
+PatternOnPosition newPattern = new PatternOnPosition(Pattern.BLINKER, new Position(20,20));
 ```
 Create new own pattern:
 
@@ -52,7 +52,7 @@ Add those patterns to the set:
 
 ```
 patterns.add(newPattern);
-patterns.add(new PatternOnPosition(myPattern,new Position(10,2)));
+patterns.add(new PatternOnPosition(myPattern,new Position(100,20)));
 ```
 Create an instance of GameSettings:
 
@@ -73,4 +73,4 @@ new GameOfLife(gameSettings).play();
 ```
 
 
-Press enter to close the window.
+Press the escape key to close the window.
